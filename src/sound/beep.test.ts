@@ -59,4 +59,14 @@ describe("beep", () => {
     });
   });
 
+
+  describe("return value", () => {
+    it("can cancel oscillator", () => {
+      const { ctx, osc } = newSpiedAudioContext();
+      const anyPositiveFreq = 600;
+      const cancelFn = beep(ctx, { freq: anyPositiveFreq });
+      cancelFn();
+      expect(osc.stop).toBeCalledWith();
+    });
+  });
 });

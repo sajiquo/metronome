@@ -23,7 +23,8 @@ const DEFAULTS: BeepParams = {
 };
 
 export type BeepInit = Partial<BeepParams>
-export const beep = (ctx: AudioContext, init: BeepInit): OscillatorNode | never => {
+export type CancelBeep = () => void;
+export const beep = (ctx: AudioContext, init: BeepInit): CancelBeep | never => {
   const { freq, whenMs } =
     checkParams(
       {
@@ -44,7 +45,9 @@ export const beep = (ctx: AudioContext, init: BeepInit): OscillatorNode | never 
     oscillator.stop(ctx.currentTime + (CONSTANTS.DURATION_MS / 1000));
   }
 
-  return oscillator;
+  return () => {
+    oscillator.stop();
+  };
 }
 
 const checkParams = (params: BeepParams): BeepParams | never => {
