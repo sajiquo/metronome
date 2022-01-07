@@ -5,6 +5,7 @@ import { Button } from "./ui/button/Button";
 
 const scheduler = createBeepScheduler({
   bpm: 120,
+  beat: [4, 4],
 });
 function App() {
   const [isActive, setIsActive] = useState(false);
