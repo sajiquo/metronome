@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Circle } from "~/ui/circle/Circle";
 import { button, normal, active, inactive } from "./Button.module.css";
 
 interface ButtonProps {
@@ -13,8 +14,8 @@ const colorClassNameMap = {
 export const Button: FC<ButtonProps> = ({ ...props }) => {
   const color = colorClassNameMap[props.mode];
   return (
-    <div className={[button, color].join(" ")} onClick={props.onClick}>
-      <span>{120}</span>
-    </div>
+    <Circle className={[button, color].join(" ")} onClick={props.onClick}>
+      <span>{props.children}</span>
+    </Circle>
   );
 };

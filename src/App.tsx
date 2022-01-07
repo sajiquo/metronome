@@ -17,10 +17,9 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Button
-          mode={isRunning ? "active" : "normal"}
-          onClick={onClick}
-        ></Button>
+        <Button mode={isRunning ? "active" : "normal"} onClick={onClick}>
+          {bpm}
+        </Button>
       </div>
       <div>
         <p>BPM: {bpm}</p>
