@@ -19,7 +19,7 @@ export interface SchedulerInit {
 }
 
 export interface Scheduler {
-  exec(): void;
+  exec(): void | never;
   cancel(): void;
 }
 

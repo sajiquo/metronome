@@ -8,10 +8,11 @@
     "build:tcm": "tcm src",
     "build:vite": "vite build",
     "lint": "run-s lint:eslint lint:prettier",
+    "lint:ci": "eslint src && prettier --check src",
     "lint:eslint": "eslint --fix src",
     "lint:prettier": "prettier --write src",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --silent",
+    "test:watch": "jest --watch --silent",
     "preview": "vite preview",
     "tauri": "tauri",
     "storybook": "start-storybook -p 6006",
@@ -20,6 +21,9 @@
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
       "eslint --fix",
+      "prettier --write"
+    ],
+    "src/constants.json": [
       "prettier --write"
     ]
   },
