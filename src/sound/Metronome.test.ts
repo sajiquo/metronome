@@ -75,7 +75,7 @@ describe("metronome", () => {
       })
     );
     expect(scheduler.exec).toHaveBeenCalledTimes(2); // 1st: initial scheduler / 2nd swapped scheduler
-    expect(scheduler.cancel).not.toHaveBeenCalled();
+    expect(scheduler.cancel).toHaveBeenCalledTimes(1);
 
     mockCreateBeepScheduler.mockRestore();
   });
@@ -97,7 +97,7 @@ describe("metronome", () => {
       })
     );
     expect(scheduler.exec).toHaveBeenCalledTimes(1);
-    expect(scheduler.cancel).toHaveBeenCalledTimes(1);
+    expect(scheduler.cancel).toHaveBeenCalledTimes(2);
 
     mockCreateBeepScheduler.mockRestore();
   });
