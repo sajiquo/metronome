@@ -26,6 +26,7 @@
     },
     "plugins": [
         "react",
+        "jest",
         "@typescript-eslint"
     ],
     "ignorePatterns": [
