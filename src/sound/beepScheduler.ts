@@ -22,18 +22,18 @@ export const createBeepScheduler = (init: SchedularInit): Scheduler | never => {
       const ctx = new AudioContext();
       let nextMs = ctx.currentTime + beepStepMs;
       intervalId = window.setInterval(() => {
-        if (nextMs < CHECK_INTERVAL_MS + (ctx.currentTime * 1000)) {
-          beepCancelFns.push(beep(ctx, { whenMs: nextMs }))
+        if (nextMs < CHECK_INTERVAL_MS + ctx.currentTime * 1000) {
+          beepCancelFns.push(beep(ctx, { whenMs: nextMs }));
           nextMs += beepStepMs;
         }
       }, CHECK_INTERVAL_MS);
     },
     cancel: () => {
       window.clearInterval(intervalId);
-      beepCancelFns.forEach(fn => fn());
+      beepCancelFns.forEach((fn) => fn());
     },
-  }
-}
+  };
+};
 
 const validate = (init: SchedularInit): SchedularInit | never => {
   const { bpm } = init;
@@ -41,7 +41,9 @@ const validate = (init: SchedularInit): SchedularInit | never => {
     throw RangeError(`BPM must be integer`);
   }
   if (bpm < MIN_AVAILABLE_BPM || MAX_AVAILABLE_BPM < bpm) {
-    throw RangeError(`BPM must be integer between ${MIN_AVAILABLE_BPM} and ${MAX_AVAILABLE_BPM}`);
+    throw RangeError(
+      `BPM must be integer between ${MIN_AVAILABLE_BPM} and ${MAX_AVAILABLE_BPM}`
+    );
   }
   return init;
-}
+};

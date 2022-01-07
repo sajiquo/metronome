@@ -12,13 +12,13 @@ describe("schedule", () => {
       value: () => {
         let _currentTime = 0;
         setInterval(() => {
-          _currentTime += 50 / 1000
+          _currentTime += 50 / 1000;
         }, 50);
         return {
           get currentTime() {
             return _currentTime;
-          }
-        }
+          },
+        };
       },
       writable: true,
     });
@@ -28,38 +28,46 @@ describe("schedule", () => {
       value: originalWindowAudioContext,
       writable: true,
     });
-
-  })
+  });
 
   const getSpiedBeep = () => {
     const cancelFn = jest.fn();
     return {
       spiedBeep: jest.spyOn(BeepModule, "beep").mockReturnValue(cancelFn),
-      cancelFn
+      cancelFn,
     };
-  }
-  it.each([MIN_AVAILABLE_BPM, MAX_AVAILABLE_BPM])("schedules beep by given bpm %d", (anyBpm) => {
+  };
+  it.each([MIN_AVAILABLE_BPM, MAX_AVAILABLE_BPM])(
+    "schedules beep by given bpm %d",
+    (anyBpm) => {
+      jest.useFakeTimers();
+      const anyBeepedTimes = 10;
+
+      const { spiedBeep, cancelFn } = getSpiedBeep();
+      const init = {
+        bpm: anyBpm,
+      };
+      const scheduler = createBeepScheduler(init);
+      scheduler.exec();
+      jest.advanceTimersByTime(bpmToMs(anyBpm) * anyBeepedTimes);
+      scheduler.cancel();
+
+      expect(spiedBeep).toHaveBeenCalledTimes(anyBeepedTimes);
+      expect(cancelFn).toHaveBeenCalledTimes(anyBeepedTimes);
+      spiedBeep.mockRestore();
+    }
+  );
+
+  it.each([
+    -1,
+    0,
+    MIN_AVAILABLE_BPM - 1,
+    MAX_AVAILABLE_BPM + 1,
+    MAX_AVAILABLE_BPM - 0.3,
+  ])("throws RangeError if bpm %d is out of range", (anyBpm) => {
     jest.useFakeTimers();
-    const anyBeepedTimes = 10;
-
-    const { spiedBeep, cancelFn } = getSpiedBeep();
     const init = {
-      bpm: anyBpm
-    };
-    const scheduler = createBeepScheduler(init);
-    scheduler.exec();
-    jest.advanceTimersByTime((bpmToMs(anyBpm) * anyBeepedTimes));
-    scheduler.cancel();
-
-    expect(spiedBeep).toHaveBeenCalledTimes(anyBeepedTimes);
-    expect(cancelFn).toHaveBeenCalledTimes(anyBeepedTimes);
-    spiedBeep.mockRestore();
-  });
-
-  it.each([-1, 0, MIN_AVAILABLE_BPM - 1, MAX_AVAILABLE_BPM + 1, MAX_AVAILABLE_BPM - 0.3])("throws RangeError if bpm %d is out of range", (anyBpm) => {
-    jest.useFakeTimers();
-    const init = {
-      bpm: anyBpm
+      bpm: anyBpm,
     };
     expect(() => createBeepScheduler(init)).toThrow(expect.any(RangeError));
   });

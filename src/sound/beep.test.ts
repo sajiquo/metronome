@@ -23,22 +23,25 @@ describe("beep", () => {
     it("should throw RangeError if given negative frequency", () => {
       const { ctx } = newSpiedAudioContext();
       const anyNegativeFreq = -600;
-      expect(() => beep(ctx, { freq: anyNegativeFreq })).toThrow(expect.any(RangeError));
+      expect(() => beep(ctx, { freq: anyNegativeFreq })).toThrow(
+        expect.any(RangeError)
+      );
     });
     it("should throw RangeError if given zero frequency", () => {
       const { ctx } = newSpiedAudioContext();
       const zeroFreq = 0;
-      expect(() => beep(ctx, { freq: zeroFreq })).toThrow(expect.any(RangeError));
+      expect(() => beep(ctx, { freq: zeroFreq })).toThrow(
+        expect.any(RangeError)
+      );
     });
   });
-
 
   describe("whenMs settings", () => {
     it("should reserve to play sound in given whenMs time", () => {
       const { ctx, osc } = newSpiedAudioContext();
       const anyPositiveWhenMs = 250;
       beep(ctx, { whenMs: anyPositiveWhenMs });
-      expect(osc.start).toHaveBeenCalledWith((anyPositiveWhenMs / 1000));
+      expect(osc.start).toHaveBeenCalledWith(anyPositiveWhenMs / 1000);
     });
 
     it("should play sound immediately if whenMs is zero", () => {
@@ -55,10 +58,11 @@ describe("beep", () => {
     it("should throw RangeError if given negative whenMs", () => {
       const { ctx } = newSpiedAudioContext();
       const anyNegativeWhenMs = -400;
-      expect(() => beep(ctx, { whenMs: anyNegativeWhenMs })).toThrow(expect.any(RangeError));
+      expect(() => beep(ctx, { whenMs: anyNegativeWhenMs })).toThrow(
+        expect.any(RangeError)
+      );
     });
   });
-
 
   describe("return value", () => {
     it("can cancel oscillator", () => {
