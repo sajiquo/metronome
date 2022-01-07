@@ -46,6 +46,7 @@ export class Metronome {
   private swapSchedulerOrNoop(triedInit: SchedulerInit): boolean {
     try {
       const newScheduler = createBeepScheduler(triedInit);
+      this.scheduler.cancel();
       this.scheduler = newScheduler;
       this.init = triedInit;
       this.isRunning() && this.start();

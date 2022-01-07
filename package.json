@@ -8,7 +8,7 @@
     "build:tcm": "tcm src",
     "build:vite": "vite build",
     "lint": "run-s lint:eslint lint:prettier",
-    "lint:ci": "eslint src && prettier src",
+    "lint:ci": "eslint src && prettier --check src",
     "lint:eslint": "eslint --fix src",
     "lint:prettier": "prettier --write src",
     "test": "jest --silent",
