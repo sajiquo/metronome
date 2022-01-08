@@ -1,0 +1,15 @@
+.slider_root {
+  @apply relative w-96 h-96 m-auto cursor-pointer;
+}
+
+.slider_root:active {
+  @apply cursor-move;
+}
+
+.slider_circle {
+  @apply absolute inset-0;
+}
+
+.slider_slide {
+  @apply bg-green-200 -translate-y-full;
+}

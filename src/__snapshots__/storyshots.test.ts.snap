@@ -1,11 +1,181 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Default 1`] = `
+exports[`Storyshots Circle Default 1`] = `
 <div
-  className=" "
+  className="  "
+  mode="normal"
 >
   <span>
-    120
+    121
   </span>
 </div>
+`;
+
+exports[`Storyshots Slider Default 1`] = `
+<div
+  className=" "
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className="  "
+    mode="normal"
+  >
+    <span>
+      120
+    </span>
+  </div>
+  <div
+    className="   "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
+      }
+    }
+  >
+    <span>
+      120
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Slider Validation Float 1`] = `
+<div
+  className=" "
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className="  "
+    mode="normal"
+  >
+    <span>
+      120
+    </span>
+  </div>
+  <div
+    className="   "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
+      }
+    }
+  >
+    <span>
+      120
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Slider Validation Invert 1`] = `
+<div
+  className=" "
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className="  "
+    mode="normal"
+  >
+    <span>
+      120
+    </span>
+  </div>
+  <div
+    className="   "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
+      }
+    }
+  >
+    <span>
+      120
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Slider Validation Negative 1`] = `
+<div
+  className=" "
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className="  "
+    mode="normal"
+  >
+    <span>
+      120
+    </span>
+  </div>
+  <div
+    className="   "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
+      }
+    }
+  >
+    <span>
+      120
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots SquareList Default 1`] = `
+<div>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    2
+  </span>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    4
+  </span>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    8
+  </span>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    16
+  </span>
+</div>
+`;
+
+exports[`Storyshots SquarePop Default 1`] = `
+<span
+  className="undefined "
+>
+  1
+</span>
+`;
+
+exports[`Storyshots SquarePop Selected 1`] = `
+<span
+  className="undefined undefined"
+>
+  1
+</span>
 `;

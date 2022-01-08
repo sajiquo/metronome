@@ -1,0 +1,7 @@
+.squarepop {
+  @apply w-10 h-10 inline-grid place-content-center cursor-pointer bg-slate-50 border-2 border-solid border-slate-300 text-lg font-bold text-slate-700 rounded-md shadow-[0_2px_6px_rgb(0,0,255,0.2)];
+}
+
+.squarepop_selected {
+  @apply bg-slate-300 border-4 shadow-none;
+}

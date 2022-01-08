@@ -1,9 +1,9 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
-import { Button } from "./Button";
+import { Circle } from "./Circle";
 
 export default {
-  component: Button,
-  title: "Button",
+  component: Circle,
+  title: "Circle",
   argTypes: {
     mode: {
       options: ["normal", "active", "inactive"],
@@ -11,11 +11,14 @@ export default {
     },
     onClick: { action: "clicked" },
   },
-} as ComponentMeta<typeof Button>;
+} as ComponentMeta<typeof Circle>;
 
-const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
+const Template: ComponentStory<typeof Circle> = (args) => (
+  <Circle {...args}>{args.children}</Circle>
+);
 
 export const Default = Template.bind({});
 Default.args = {
   mode: "normal",
+  children: <>121</>,
 };
