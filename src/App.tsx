@@ -2,7 +2,7 @@ import { useState } from "react";
 import { INITIAL_BPM, INITIAL_BEAT } from "~/constants.json";
 import "./App.css";
 import { Metronome } from "./sound/Metronome";
-import { Button } from "./ui/button/Button";
+import { Slider } from "./ui/slider/Slider";
 
 const metronome = new Metronome();
 function App() {
@@ -10,36 +10,28 @@ function App() {
   const [bpm, setBpm] = useState(INITIAL_BPM);
   const [beat, setBeat] = useState(INITIAL_BEAT[0]);
   const onClick = () => {
-    isRunning ? metronome.stop() : metronome.start();
+    metronome.isRunning() ? metronome.stop() : metronome.start();
     setIsRunning(metronome.isRunning());
   };
 
   return (
     <div className="App">
       <div>
-        <Button mode={isRunning ? "active" : "normal"} onClick={onClick}>
-          {bpm}
-        </Button>
-      </div>
-      <div>
         <p>BPM: {bpm}</p>
         <p>Beat: {beat} / 4</p>
       </div>
+      <Slider
+        min={40}
+        max={240}
+        step={1}
+        onUpdate={(val: number) => {
+          setBpm(val);
+          metronome.changeBpm(val);
+        }}
+        onClick={onClick}
+        mode={isRunning ? "active" : "normal"}
+      />
       <div>
-        <input
-          type="range"
-          name="bpm"
-          id="bpm"
-          min="40"
-          max="240"
-          step="1"
-          value={bpm}
-          onChange={(ev) => {
-            const bpm = Number(ev.currentTarget.value);
-            setBpm(bpm);
-            metronome.changeBpm(bpm);
-          }}
-        />
         <input
           type="range"
           name="beat"

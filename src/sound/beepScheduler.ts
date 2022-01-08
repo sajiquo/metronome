@@ -57,6 +57,7 @@ export const createBeepScheduler = (init: SchedulerInit): Scheduler | never => {
             freq: isNextFirstBeat ? BEEP_FREQUENCY * 2 : BEEP_FREQUENCY,
           })
         );
+        if (beepCancelFns.length > 32) beepCancelFns.shift();
         beepTimeQueue.next();
         nthBeatQueue.next();
       };

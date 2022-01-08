@@ -1,48 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Storyshots Button Default 1`] = `
-<div
-  className="  "
->
-  <span>
-    <span>
-      121
-    </span>
-  </span>
-</div>
-`;
-
 exports[`Storyshots Circle Default 1`] = `
 <div
-  className=" "
+  className="  "
+  mode="normal"
 >
-  <span />
+  <span>
+    121
+  </span>
 </div>
 `;
 
 exports[`Storyshots Slider Default 1`] = `
 <div
+  className=" "
   onMouseDown={[Function]}
   onMouseMove={[Function]}
   onMouseUp={[Function]}
 >
   <div
-    className=" "
+    className="  "
+    mode="normal"
   >
     <span>
-      240
+      120
     </span>
   </div>
   <div
-    className="  "
+    className="   "
     style={
       Object {
-        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
       }
     }
   >
     <span>
-      240
+      120
     </span>
   </div>
 </div>
@@ -50,27 +44,30 @@ exports[`Storyshots Slider Default 1`] = `
 
 exports[`Storyshots Slider Validation Float 1`] = `
 <div
+  className=" "
   onMouseDown={[Function]}
   onMouseMove={[Function]}
   onMouseUp={[Function]}
 >
   <div
-    className=" "
+    className="  "
+    mode="normal"
   >
     <span>
-      240
+      120
     </span>
   </div>
   <div
-    className="  "
+    className="   "
     style={
       Object {
-        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
       }
     }
   >
     <span>
-      240
+      120
     </span>
   </div>
 </div>
@@ -78,27 +75,30 @@ exports[`Storyshots Slider Validation Float 1`] = `
 
 exports[`Storyshots Slider Validation Invert 1`] = `
 <div
+  className=" "
   onMouseDown={[Function]}
   onMouseMove={[Function]}
   onMouseUp={[Function]}
 >
   <div
-    className=" "
+    className="  "
+    mode="normal"
   >
     <span>
-      240
+      120
     </span>
   </div>
   <div
-    className="  "
+    className="   "
     style={
       Object {
-        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
       }
     }
   >
     <span>
-      240
+      120
     </span>
   </div>
 </div>
@@ -106,27 +106,30 @@ exports[`Storyshots Slider Validation Invert 1`] = `
 
 exports[`Storyshots Slider Validation Negative 1`] = `
 <div
+  className=" "
   onMouseDown={[Function]}
   onMouseMove={[Function]}
   onMouseUp={[Function]}
 >
   <div
-    className=" "
+    className="  "
+    mode="normal"
   >
     <span>
-      240
+      120
     </span>
   </div>
   <div
-    className="  "
+    className="   "
     style={
       Object {
-        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 60%, 0% 60%)",
+        "display": "none",
       }
     }
   >
     <span>
-      240
+      120
     </span>
   </div>
 </div>

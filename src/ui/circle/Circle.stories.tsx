@@ -4,8 +4,21 @@ import { Circle } from "./Circle";
 export default {
   component: Circle,
   title: "Circle",
+  argTypes: {
+    mode: {
+      options: ["normal", "active", "inactive"],
+      control: { type: "radio" },
+    },
+    onClick: { action: "clicked" },
+  },
 } as ComponentMeta<typeof Circle>;
 
-const Template: ComponentStory<typeof Circle> = (args) => <Circle {...args} />;
+const Template: ComponentStory<typeof Circle> = (args) => (
+  <Circle {...args}>{args.children}</Circle>
+);
 
 export const Default = Template.bind({});
+Default.args = {
+  mode: "normal",
+  children: <>121</>,
+};

@@ -1,3 +1,15 @@
 .circle {
-  @apply grid place-content-center rounded-full w-96 h-96 bg-slate-300 text-7xl text-slate-600 font-light select-none;
+  @apply grid place-content-center rounded-full w-96 h-96  text-7xl text-slate-600 font-light select-none;
+}
+
+.normal {
+  @apply bg-slate-300;
+}
+
+.active {
+  @apply bg-green-300;
+}
+
+.inactive {
+  @apply bg-red-300;
 }
