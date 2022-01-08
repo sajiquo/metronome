@@ -1,5 +1,5 @@
 .slider_root {
-  @apply relative;
+  @apply relative w-96 h-96;
 }
 
 .slider_circle {
@@ -7,5 +7,5 @@
 }
 
 .slider_slide {
-  @apply bg-red-400 -translate-y-full;
+  @apply bg-blue-200 -translate-y-full;
 }
