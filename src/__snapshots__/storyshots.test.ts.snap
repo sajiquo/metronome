@@ -22,25 +22,111 @@ exports[`Storyshots Circle Default 1`] = `
 
 exports[`Storyshots Slider Default 1`] = `
 <div
-  onClick={[Function]}
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
 >
   <div
     className=" "
   >
     <span>
-      circle1
+      240
     </span>
   </div>
   <div
     className="  "
     style={
       Object {
-        "clipPath": "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
       }
     }
   >
     <span>
-      circle2
+      240
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Slider Validation Float 1`] = `
+<div
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className=" "
+  >
+    <span>
+      240
+    </span>
+  </div>
+  <div
+    className="  "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      }
+    }
+  >
+    <span>
+      240
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Slider Validation Invert 1`] = `
+<div
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className=" "
+  >
+    <span>
+      240
+    </span>
+  </div>
+  <div
+    className="  "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      }
+    }
+  >
+    <span>
+      240
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Slider Validation Negative 1`] = `
+<div
+  onMouseDown={[Function]}
+  onMouseMove={[Function]}
+  onMouseUp={[Function]}
+>
+  <div
+    className=" "
+  >
+    <span>
+      240
+    </span>
+  </div>
+  <div
+    className="  "
+    style={
+      Object {
+        "clipPath": "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)",
+      }
+    }
+  >
+    <span>
+      240
     </span>
   </div>
 </div>
