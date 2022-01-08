@@ -134,3 +134,48 @@ exports[`Storyshots Slider Validation Negative 1`] = `
   </div>
 </div>
 `;
+
+exports[`Storyshots SquareList Default 1`] = `
+<div>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    2
+  </span>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    4
+  </span>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    8
+  </span>
+  <span
+    className="undefined "
+    onClick={[Function]}
+  >
+    16
+  </span>
+</div>
+`;
+
+exports[`Storyshots SquarePop Default 1`] = `
+<span
+  className="undefined "
+>
+  1
+</span>
+`;
+
+exports[`Storyshots SquarePop Selected 1`] = `
+<span
+  className="undefined undefined"
+>
+  1
+</span>
+`;

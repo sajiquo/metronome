@@ -1,5 +1,9 @@
 .slider_root {
-  @apply relative w-96 h-96;
+  @apply relative w-96 h-96 m-auto cursor-pointer;
+}
+
+.slider_root:active {
+  @apply cursor-move;
 }
 
 .slider_circle {
@@ -7,5 +11,5 @@
 }
 
 .slider_slide {
-  @apply bg-blue-200 -translate-y-full;
+  @apply bg-green-200 -translate-y-full;
 }
