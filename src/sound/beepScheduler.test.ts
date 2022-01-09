@@ -10,31 +10,17 @@ import * as BeepModule from "./beep";
 import { bpmToMs } from "./bpmToMs";
 
 describe("schedule", () => {
-  let originalWindowAudioContext: typeof window.AudioContext;
-  beforeAll(() => {
-    originalWindowAudioContext = window.AudioContext;
-    Object.defineProperty(window, "AudioContext", {
-      // eslint-disable-next-line @typescript-eslint/no-empty-function
-      value: () => {
-        let _currentTime = 0;
-        setInterval(() => {
-          _currentTime += 50 / 1000;
-        }, 50);
-        return {
-          get currentTime() {
-            return _currentTime;
-          },
-        };
+  const createMockAudioContext = () => {
+    let _currentTime = 0;
+    setInterval(() => {
+      _currentTime += 50 / 1000;
+    }, 50);
+    return {
+      get currentTime() {
+        return _currentTime;
       },
-      writable: true,
-    });
-  });
-  afterAll(() => {
-    Object.defineProperty(window, "AudioContext", {
-      value: originalWindowAudioContext,
-      writable: true,
-    });
-  });
+    } as AudioContext;
+  };
 
   const getSpiedBeep = () => {
     const cancelFn = jest.fn();
@@ -56,7 +42,7 @@ describe("schedule", () => {
       bpm: anyBpm,
       beat: anyBeat,
     } as unknown as SchedulerInit;
-    const scheduler = createBeepScheduler(init);
+    const scheduler = createBeepScheduler(createMockAudioContext(), init);
     scheduler.exec();
     jest.advanceTimersByTime(bpmToMs(anyBpm) * testTimeLength);
     scheduler.cancel();
@@ -81,7 +67,7 @@ describe("schedule", () => {
         bpm: anyBpm,
         beat: anyBeat,
       } as unknown as SchedulerInit;
-      const scheduler = createBeepScheduler(init);
+      const scheduler = createBeepScheduler(createMockAudioContext(), init);
       scheduler.exec();
       jest.advanceTimersByTime(bpmToMs(anyBpm) * beepTimes);
       scheduler.cancel();
@@ -116,7 +102,9 @@ describe("schedule", () => {
         bpm: anyBpm,
         beat: anyBeat,
       } as unknown as SchedulerInit;
-      expect(() => createBeepScheduler(init)).toThrow(expect.any(RangeError));
+      expect(() => createBeepScheduler(createMockAudioContext(), init)).toThrow(
+        expect.any(RangeError)
+      );
     }
   );
 
@@ -126,7 +114,7 @@ describe("schedule", () => {
       bpm: anyBpm,
       beat: [4, 4] as const,
     };
-    const scheduler = createBeepScheduler(init);
+    const scheduler = createBeepScheduler(createMockAudioContext(), init);
     expect(() => scheduler.exec()).not.toThrow(expect.any(Error));
     expect(() => scheduler.exec()).toThrow(expect.any(Error));
   });

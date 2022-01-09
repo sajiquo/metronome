@@ -16,6 +16,7 @@ export interface SchedulerInit {
    * [6, 8] == 6/8
    */
   beat: readonly [number, number];
+  destNode?: AudioNode;
 }
 
 export interface Scheduler {
@@ -25,7 +26,10 @@ export interface Scheduler {
 
 const CHECK_INTERVAL_MS = bpmToMs(MAX_AVAILABLE_BPM * 2);
 
-export const createBeepScheduler = (init: SchedulerInit): Scheduler | never => {
+export const createBeepScheduler = (
+  ctx: AudioContext,
+  init: SchedulerInit
+): Scheduler | never => {
   const _init = validate(init);
   const [beatNumerator, beatDenominator] = _init.beat;
   const beepStepMs = bpmToMs((_init.bpm * beatDenominator) / 4);
@@ -40,7 +44,6 @@ export const createBeepScheduler = (init: SchedulerInit): Scheduler | never => {
   return {
     exec: () => {
       if (intervalId) throw Error("scheduler has already been executed");
-      const ctx = new AudioContext();
       const beepTimeQueue = newIncrementer(
         getCurrentTimeMs(ctx) + beepStepMs,
         beepStepMs
@@ -55,6 +58,7 @@ export const createBeepScheduler = (init: SchedulerInit): Scheduler | never => {
           beep(ctx, {
             whenMs: nextBeepTime,
             freq: isNextFirstBeat ? BEEP_FREQUENCY * 2 : BEEP_FREQUENCY,
+            destNode: init.destNode,
           })
         );
         if (beepCancelFns.length > 32) beepCancelFns.shift();

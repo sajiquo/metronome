@@ -1,18 +1,17 @@
-import { Metronome as MetronomeInstance } from "~/sound/Metronome";
-import { useBeat, useBpm, useIsRunning } from "~/store/store";
+import { useBeat, useBpm, useIsRunning, useVolume } from "~/store/store";
 import { MIN_AVAILABLE_BPM, MAX_AVAILABLE_BPM } from "~/constants.json";
 import { Slider } from "~/ui/slider/Slider";
 import { SquareList } from "~/ui/squareList/SquareList";
+import { useMetronome } from "~/hooks/useMetronome";
 
-const _metronome = new MetronomeInstance();
-function Metronome() {
+function MetronomeApp() {
   const [isRunning, setIsRunning] = useIsRunning();
   const [bpm, setBpm] = useBpm();
   const [beat, setBeat] = useBeat();
-  const onClick = () => {
-    _metronome.isRunning() ? _metronome.stop() : _metronome.start();
-    setIsRunning(_metronome.isRunning());
-  };
+  const [volume, setVolume] = useVolume();
+  const onClick = () => setIsRunning(!isRunning);
+
+  useMetronome();
 
   return (
     <>
@@ -21,6 +20,7 @@ function Metronome() {
         <p>
           Beat: {beat[0]} / {beat[1]}
         </p>
+        <p>Volume: {volume}</p>
       </div>
       <Slider
         min={MIN_AVAILABLE_BPM}
@@ -28,18 +28,16 @@ function Metronome() {
         step={1}
         onUpdate={(val: number) => {
           setBpm(val);
-          _metronome.changeBpm(val);
         }}
         onClick={onClick}
         mode={isRunning ? "active" : "normal"}
       />
       <SquareList
         list={[2, 3, 4, 5, 6, 7, 8, 9]}
-        initIdx={2}
+        initIdx={1}
         onChange={(val) => {
           const newBeat = [Number(val), beat[1]] as const;
           setBeat(newBeat);
-          _metronome.changeBeat(newBeat);
         }}
       ></SquareList>
       <SquareList
@@ -48,11 +46,20 @@ function Metronome() {
         onChange={(val) => {
           const newBeat = [beat[0], Number(val)] as const;
           setBeat(newBeat);
-          _metronome.changeBeat(newBeat);
         }}
       ></SquareList>
+      <input
+        type="range"
+        name="volume"
+        id="volume"
+        min={0}
+        max={100}
+        step={1}
+        value={volume}
+        onChange={(ev) => setVolume(Number(ev.currentTarget.value))}
+      />
     </>
   );
 }
 
-export default Metronome;
+export default MetronomeApp;

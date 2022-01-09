@@ -1,10 +1,10 @@
 import { RecoilRoot } from "recoil";
-import Metronome from "./model/Metronome";
+import MetronomeApp from "./page/MetronomeApp";
 
 export function App() {
   return (
     <RecoilRoot>
-      <Metronome />
+      <MetronomeApp />
     </RecoilRoot>
   );
 }

@@ -14,6 +14,7 @@ export interface BeepParams {
    * DEFAULT: 0ms
    */
   whenMs: number;
+  destNode?: AudioNode;
 }
 
 const DEFAULTS: BeepParams = {
@@ -32,7 +33,12 @@ export const beep = (ctx: AudioContext, init: BeepInit): CancelBeep | never => {
   const oscillator = ctx.createOscillator();
   oscillator.type = CONSTANTS.OSCILLATOR_TYPE;
   oscillator.frequency.value = freq;
-  oscillator.connect(ctx.destination);
+
+  if (init.destNode) {
+    oscillator.connect(init.destNode);
+  } else {
+    oscillator.connect(ctx.destination);
+  }
 
   if (whenMs) {
     oscillator.start(whenMs / 1000);
