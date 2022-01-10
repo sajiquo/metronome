@@ -86,9 +86,7 @@ describe("schedule", () => {
 
   it.each([
     [0, [4, 4]],
-    [1, [4, 4]],
-    [MIN_AVAILABLE_BPM - 2, [4, 4]],
-    [MAX_AVAILABLE_BPM + 2, [4, 4]],
+    [-1, [4, 4]],
     [MAX_AVAILABLE_BPM - 1.3, [4, 4]],
     [120, [MIN_AVAILABLE_BEAT - 1, MAX_AVAILABLE_BEAT + 1]],
     [120, [0, 0]],

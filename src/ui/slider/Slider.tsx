@@ -10,6 +10,7 @@ export interface SliderProps {
   min: number;
   max: number;
   step: number;
+  value: number;
   onUpdate: (val: number) => void;
   onClick?: () => void;
   mode?: "normal" | "active" | "inactive";
@@ -18,11 +19,11 @@ export interface SliderProps {
 export const Slider: FC<SliderProps & JSX.IntrinsicElements["div"]> = (
   props
 ) => {
-  const { min, max, step, onUpdate } = validate(props);
+  const { value, min, max, step, onUpdate } = validate(props);
   const [mouseState, dispatchMouseState] = useMouseDownMove();
   const [fillRate, updateFillRate] = useMouseEventYRate(40);
   const clipPath = useMemo(() => getClipPathStr(fillRate), [fillRate]);
-  const value = usePerc2Range(min, max, step)(fillRate);
+  const perc2Range = usePerc2Range(min, max, step);
 
   return (
     <div
@@ -33,7 +34,7 @@ export const Slider: FC<SliderProps & JSX.IntrinsicElements["div"]> = (
       }}
       onMouseUp={() => {
         mouseState !== "downmove" && props.onClick?.();
-        onUpdate(value);
+        onUpdate(perc2Range(fillRate));
         dispatchMouseState("mouseup");
       }}
       onMouseMove={(ev) => {
