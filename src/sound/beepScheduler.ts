@@ -1,5 +1,4 @@
 import {
-  MIN_AVAILABLE_BPM,
   MAX_AVAILABLE_BPM,
   MIN_AVAILABLE_BEAT,
   MAX_AVAILABLE_BEAT,
@@ -83,10 +82,8 @@ const validate = (init: SchedulerInit): SchedulerInit | never => {
   if (!Number.isInteger(bpm)) {
     throw RangeError(`BPM must be integer`);
   }
-  if (bpm < MIN_AVAILABLE_BPM || MAX_AVAILABLE_BPM < bpm) {
-    throw RangeError(
-      `BPM must be integer between ${MIN_AVAILABLE_BPM} and ${MAX_AVAILABLE_BPM}`
-    );
+  if (bpm <= 0) {
+    throw RangeError(`BPM must be positive`);
   }
   if (!Number.isInteger(beat[0]) || !Number.isInteger(beat[1])) {
     throw RangeError(`beat must be integer`);

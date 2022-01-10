@@ -3,6 +3,7 @@ import { MIN_AVAILABLE_BPM, MAX_AVAILABLE_BPM } from "~/constants.json";
 import { Slider } from "~/ui/slider/Slider";
 import { SquareList } from "~/ui/squareList/SquareList";
 import { useMetronome } from "~/hooks/useMetronome";
+import { useEffect } from "react";
 
 function MetronomeApp() {
   const [isRunning, setIsRunning] = useIsRunning();
@@ -12,6 +13,50 @@ function MetronomeApp() {
   const onClick = () => setIsRunning(!isRunning);
 
   useMetronome();
+
+  useEffect(() => {
+    const handler = (ev: KeyboardEvent) => {
+      switch (ev.code) {
+        case "Space":
+          setIsRunning(!isRunning);
+          break;
+        case "ArrowUp":
+          ev.shiftKey
+            ? setBpm(bpm + 10)
+            : ev.ctrlKey
+            ? setBpm(bpm + 5)
+            : setBpm(bpm + 1);
+          break;
+        case "ArrowDown":
+          ev.shiftKey
+            ? setBpm(bpm - 10)
+            : ev.ctrlKey
+            ? setBpm(bpm - 5)
+            : setBpm(bpm - 1);
+          break;
+        case "ArrowRight":
+          ev.shiftKey
+            ? setVolume(volume + 10)
+            : ev.ctrlKey
+            ? setVolume(volume + 5)
+            : setVolume(volume + 1);
+          break;
+        case "ArrowLeft":
+          ev.shiftKey
+            ? setVolume(volume - 10)
+            : ev.ctrlKey
+            ? setVolume(volume - 5)
+            : setVolume(volume - 1);
+          break;
+        default:
+          return;
+      }
+    };
+    document.addEventListener("keydown", handler);
+    return () => {
+      document.removeEventListener("keydown", handler);
+    };
+  });
 
   return (
     <>
@@ -30,6 +75,7 @@ function MetronomeApp() {
           setBpm(val);
         }}
         onClick={onClick}
+        value={bpm}
         mode={isRunning ? "active" : "normal"}
       />
       <SquareList

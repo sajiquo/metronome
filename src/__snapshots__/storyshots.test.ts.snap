@@ -22,9 +22,7 @@ exports[`Storyshots Slider Default 1`] = `
     className="  "
     mode="normal"
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
   <div
     className="   "
@@ -35,9 +33,7 @@ exports[`Storyshots Slider Default 1`] = `
       }
     }
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
 </div>
 `;
@@ -53,9 +49,7 @@ exports[`Storyshots Slider Validation Float 1`] = `
     className="  "
     mode="normal"
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
   <div
     className="   "
@@ -66,9 +60,7 @@ exports[`Storyshots Slider Validation Float 1`] = `
       }
     }
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
 </div>
 `;
@@ -84,9 +76,7 @@ exports[`Storyshots Slider Validation Invert 1`] = `
     className="  "
     mode="normal"
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
   <div
     className="   "
@@ -97,9 +87,7 @@ exports[`Storyshots Slider Validation Invert 1`] = `
       }
     }
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
 </div>
 `;
@@ -115,9 +103,7 @@ exports[`Storyshots Slider Validation Negative 1`] = `
     className="  "
     mode="normal"
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
   <div
     className="   "
@@ -128,9 +114,7 @@ exports[`Storyshots Slider Validation Negative 1`] = `
       }
     }
   >
-    <span>
-      120
-    </span>
+    <span />
   </div>
 </div>
 `;
