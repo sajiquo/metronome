@@ -1,11 +1,12 @@
 {
   "name": "metronome",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "build": "run-s build:tcm build:ts build:vite",
+    "build": "run-s build:tcm build:manifest build:ts build:vite",
     "build:ts": "tsc",
     "build:tcm": "tcm src",
+    "build:manifest": "cat < manifest.json | jq \".version|=$(npm pkg get version)\" -r > manifest.json",
     "build:vite": "vite build",
     "lint": "run-s lint:eslint lint:prettier",
     "lint:ci": "eslint src && prettier --check src",
